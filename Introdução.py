@@ -1,12 +1,21 @@
 import streamlit as st
 
-# --- Configuração da Página (deve ser o primeiro comando) ---
 st.set_page_config(
     page_title="Aprimoramento e Validação de Modelos para Séries Temporais",
     layout="wide"
 )
 
-# --- Conteúdo da Página Principal ---
+st.sidebar.markdown("""
+Desenvolvido por:
+                    
+ANDRESSA DOS SANTOS SILVA\n
+ANDERSON PORTES DO NASCIMENTO\n
+ALEXANDRE DA CUNHA FERNANDES\n
+ALEXSANDRO DA SILVA BEZERRA\n
+BRENO HENRIQUE REYS LORENZO\n
+LEONARDO DE JESUS ANDRADE
+""")
+
 st.title("Aprimoramento e Validação de Modelos para Séries Temporais")
 st.markdown("---")
 
@@ -26,5 +35,3 @@ individuais dos serviços, visando reduzir a taxa de erro das previsões, especi
 para o serviço com comportamento volátil. 
     """
 )
-
-st.sidebar.success("Selecione um dashboard acima.")

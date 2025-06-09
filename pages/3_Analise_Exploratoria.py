@@ -9,6 +9,17 @@ import plotly.graph_objects as go
 # Set the page configuration
 st.set_page_config(layout="wide", page_title="Análise de Comissões 2022-2024")
 
+st.sidebar.markdown("""
+Desenvolvido por:
+                    
+ANDRESSA DOS SANTOS SILVA\n
+ANDERSON PORTES DO NASCIMENTO\n
+ALEXANDRE DA CUNHA FERNANDES\n
+ALEXSANDRO DA SILVA BEZERRA\n
+BRENO HENRIQUE REYS LORENZO\n
+LEONARDO DE JESUS ANDRADE
+""")
+
 st.title("Análise Exploratória Salão de Beleza")
 st.markdown("---")
 

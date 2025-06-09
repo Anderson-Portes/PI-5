@@ -11,7 +11,7 @@ def get_model(data, cross_val):
         "learning_rate": 0.01
     }
     model = XGBRegressor(**best_params, random_state=42, use_label_encoder=False)
-    model.fit(data['X_train'], data['Y_train_d'])
+    model.fit(data['X'], data['Y_deseason'])
     seasonal_test_xgboost= data['res'].seasonal[data['test_idx']]
     y_pred_xgboost = model.predict(data['X_test'])
     metrics_xgb = calc_metrics(data['Y_test_d'], y_pred_xgboost)

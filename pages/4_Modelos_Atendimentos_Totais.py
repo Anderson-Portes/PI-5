@@ -5,6 +5,17 @@ from models import data, proph, xgb, arima, sarimax
 
 st.set_page_config(page_title="Modelos para atendimentos totais", layout="wide")
 
+st.sidebar.markdown("""
+Desenvolvido por:
+                    
+ANDRESSA DOS SANTOS SILVA\n
+ANDERSON PORTES DO NASCIMENTO\n
+ALEXANDRE DA CUNHA FERNANDES\n
+ALEXSANDRO DA SILVA BEZERRA\n
+BRENO HENRIQUE REYS LORENZO\n
+LEONARDO DE JESUS ANDRADE
+""")
+
 st.title("Modelos para atendimentos totais")
 st.markdown("---")
 
