@@ -17,7 +17,7 @@ BRENO HENRIQUE REYS LORENZO\n
 LEONARDO DE JESUS ANDRADE
 """)
 
-st.title("Modelos para atendimentos totais")
+st.title("Modelos para os atendimentos do serviço Top 1")
 st.markdown("---")
 
 selected_models = st.multiselect('Selecione os modelos: ', ['XGBOOST', 'ARIMA', 'SARIMAX', 'PROPHET'])
