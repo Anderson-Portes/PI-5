@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+import matplotlib.pyplot as plt
 from models import data, proph, xgb, arima, sarimax
 
 
@@ -42,8 +43,27 @@ with st.spinner():
         'Mean Absolute Percentage Error': [m['metrics']['mape'] for  m in filtered_models],
         'Mean Relative Error': [m['metrics']['mean_rel_error'] for  m in filtered_models],
     }).set_index('Model')
+    st.header('Previsões')
     for model in filtered_models:
         st.pyplot(model['plot'])
+    
+    st.header('Métricas')
     st.write(df_metrics)
+    color_map = {
+        'XGBOOST': 'orange',
+        'ARIMA': 'black',
+        'SARIMAX': 'red',
+        'PROPHET': 'green'
+    }
+
+    for metric in df_metrics.columns:
+        fig, ax = plt.subplots(figsize=(10, 6))
+        colors = [color_map[model] for model in selected_models]
+        ax.bar(df_metrics.index, df_metrics[metric], color=colors)
+        ax.set_title(f'Métrica - {metric}')
+        ax.set_xlabel('Modelo')
+        ax.set_ylabel(metric)
+        # ax.set_xticks(rotation=45)
+        st.pyplot(fig)
 
 
