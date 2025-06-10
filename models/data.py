@@ -3,7 +3,7 @@ import pandas as pd
 from statsmodels.tsa.seasonal import STL
 from sklearn.model_selection import TimeSeriesSplit
 
-def get_data():
+def get_data(filter_by_service=False):
     br_holidays = holidays.Brazil(state='SP')
 
     df_2022 = pd.read_csv('comissões 2022.csv', sep=";", encoding='ISO-8859-1', skiprows=7)
@@ -15,6 +15,10 @@ def get_data():
     df = df.reset_index(drop=True)
     df = df.drop(columns=['Assistente','Consumo de Pacote','CPF', 'Desconto Cliente', 'Motivo de Desconto','Desconto Operadora', 'Custo operacional','Profissional','Cliente','Comissão para','Quem registrou a transação', 'Valor', 'Valor Base Comissão', '% Comissão', 'Valor Comissão','Data de Liberação da Comissão','Pagamento / Estorno','Pago em'])
     df['Atendimento/Venda'] = pd.to_datetime(df['Atendimento/Venda'], format='%d/%m/%Y')
+
+    
+    if filter_by_service:
+        df = df[df['Serviço/Produto/Pacote'] == 'Manutenção - Unha de Gel']
     
     df_serie = df['Atendimento/Venda'].value_counts().sort_index()
     df_serie = pd.DataFrame({'Data': df_serie.index, 'Atendimento/Venda': df_serie.values})

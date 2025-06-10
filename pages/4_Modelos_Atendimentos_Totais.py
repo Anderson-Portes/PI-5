@@ -20,20 +20,18 @@ st.title("Modelos para atendimentos totais")
 st.markdown("---")
 
 selected_models = st.multiselect('Selecione os modelos: ', ['XGBOOST', 'ARIMA', 'SARIMAX', 'PROPHET'])
-cross_val = st.checkbox('Validação Cruzada')
 
 data = data.get_data()
-
 if not selected_models:
     st.error('Selecione um modelo.')
     st.stop()
 
 with st.spinner():
     models = {
-        'XGBOOST': xgb.get_model(data, cross_val),
-        'ARIMA': arima.get_model(data, cross_val),
-        'SARIMAX': sarimax.get_model(data, cross_val),
-        'PROPHET': proph.get_model(data, cross_val)
+        'XGBOOST': xgb.get_model(data),
+        'ARIMA': arima.get_model(data),
+        'SARIMAX': sarimax.get_model(data),
+        'PROPHET': proph.get_model(data)
     }
     filtered_models = [{ **model, 'name': name} for [name, model] in models.items() if name in selected_models]
     df_metrics = pd.DataFrame({ 
